@@ -1,9 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}Application de gestion des patients{% endblock %}</title>
+    
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+        <!-- Ajoutez vos propres feuilles de style ici, si nécessaire -->
+        {# <link rel="stylesheet" href="{{ asset('css/custom.css') }}"> #}
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -14,6 +20,47 @@
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">SuiviPatientPro</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="../index.php">Accueil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="templates/Patient/addPatient.html.twig">Ajouter un patient</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="templates/listPatient.php">Liste des patients</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="templates/addRendezvous.php">Prendre un rendez-vous</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="templates/listRendezvous.php">Liste des rendez-vous</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+
+          <main role="main" class="container mt-4">
+            {% block body %}{% endblock %}
+        </main>
+    
+        <footer class="container mt-4">
+            <p>&copy; Application de gestion des patients - {{ 'now'|date('Y') }}</p>
+        </footer>
+    
+        <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        
+        <!-- Ajoutez vos propres scripts JavaScript ici, si nécessaire -->
+        {# <script src="{{ asset('js/custom.js') }}"></script> #}
         {% block body %}{% endblock %}
     </body>
 </html>
